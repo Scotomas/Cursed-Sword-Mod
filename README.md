@@ -67,5 +67,4 @@ Edit `keybind_config.json` to use different buttons/keys.
 
 1. Download This Mod
 ```bash
-git clone https://github.com/YourUsername/Cursed-Sword-Mod.git
-cd Cursed-Sword-Mod
+git clone https://github.com/Scotomas/Cursed-Sword-Mod/
