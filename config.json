@@ -1,0 +1,167 @@
+{
+  "mod_name": "Cursed Sword - Auto Parry System v2.2",
+  "version": "2.2.0",
+  "author": "CursedSword Mod Team",
+  "description": "Per-player toggleable mod with stacking buffs, orange glow, UI counter, sound effects, and particles",
+  
+  "weapon_config": {
+    "base_weapon": "Hand of Malenia",
+    "weapon_id": 32,
+    "ash_id": 100,
+    "ash_name": "Parry",
+    "scaling": "DEX",
+    "min_dexterity": 20,
+    "damage_multiplier": 1.0
+  },
+  
+  "parry_config": {
+    "input_controller": ["Y", "LT"],
+    "input_keyboard": "E",
+    "parry_window_duration": 0.6,
+    "cooldown": 0.5,
+    "works_on_all_enemies": true,
+    "note": "Use keybind_config.json to customize input keys"
+  },
+  
+  "buff_config": {
+    "stacking_system": {
+      "enabled": true,
+      "max_stacks": 10,
+      "buff_duration": 15,
+      "resets_on_parry": true,
+      "per_stack_buffs": {
+        "physical_damage": "0.3%",
+        "stamina_regen": "0.5%",
+        "stance_break_damage": "0.2%"
+      },
+      "max_total_buffs": {
+        "physical_damage": "3.0%",
+        "stamina_regen": "5.0%",
+        "stance_break_damage": "2.0%"
+      }
+    }
+  },
+  
+  "visual_effects": {
+    "orange_glow": {
+      "enabled": true,
+      "base_intensity": 0.3,
+      "max_intensity": 1.0,
+      "color": {
+        "r": 1.0,
+        "g": 0.55,
+        "b": 0.0
+      },
+      "scales_with_stacks": true,
+      "disappears_with_buff": true
+    },
+    "particle_effects": {
+      "enabled": true,
+      "parry_burst": {
+        "enabled": true,
+        "description": "Particle burst on every successful parry"
+      },
+      "stack_milestones": {
+        "enabled": true,
+        "stack_1": {
+          "description": "Particles on first stack"
+        },
+        "stack_5": {
+          "description": "Special particles at 5 stacks (midway milestone)"
+        },
+        "stack_10": {
+          "description": "Epic particle burst at max stack (10)"
+        }
+      }
+    }
+  },
+  
+  "sound_effects": {
+    "enabled": true,
+    "volume": 1.0,
+    "pitch": 1.0,
+    "description": "Sound effects play on parry and stack milestones",
+    
+    "parry_success": {
+      "enabled": true,
+      "file": "parry_success.wem",
+      "volume": 1.0,
+      "pitch": 1.0,
+      "description": "Plays on every successful parry"
+    },
+    
+    "stack_milestones": {
+      "enabled": true,
+      
+      "stack_1": {
+        "enabled": true,
+        "file": "stack_milestone_1.wem",
+        "volume": 0.8,
+        "pitch": 1.2,
+        "description": "First stack achieved"
+      },
+      
+      "stack_5": {
+        "enabled": true,
+        "file": "stack_milestone_5.wem",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "description": "Halfway milestone (5 stacks)"
+      },
+      
+      "stack_10": {
+        "enabled": true,
+        "file": "stack_milestone_10.wem",
+        "volume": 1.2,
+        "pitch": 0.9,
+        "description": "Maximum stack achieved (10 stacks) - epic sound!"
+      }
+    },
+    
+    "sound_files": {
+      "note": "Place .wem audio files in the mod's 'sounds' folder",
+      "required_files": [
+        "parry_success.wem",
+        "stack_milestone_1.wem",
+        "stack_milestone_5.wem",
+        "stack_milestone_10.wem"
+      ]
+    }
+  },
+  
+  "ui_counter": {
+    "enabled": true,
+    "position": "with_buff_icons",
+    "description": "Stack counter displayed with other status effect icons",
+    "display_format": "CURSE: [X/10]",
+    "auto_hide_on_expiry": true,
+    "text_color": "orange",
+    "refresh_rate": "every_frame"
+  },
+  
+  "per_player_settings": {
+    "mod_toggle_enabled": true,
+    "default_enabled": true,
+    "toggle_command": "toggle",
+    "description": "Each player can disable mod individually without affecting others"
+  },
+  
+  "seamless_coop": {
+    "enabled": true,
+    "sync_priority": 10,
+    "pvp_enabled": true,
+    "pve_only": false,
+    "host_only": false,
+    "sync_stacks_across_players": true,
+    "sync_ui_feedback": true
+  },
+  
+  "balance": {
+    "prevent_overpowering": true,
+    "difficulty_scaling": "world",
+    "available_to_all_builds": true,
+    "stack_system_prevents_infinite_scaling": true,
+    "buff_resets_on_parry": true,
+    "glow_disappears_with_buff": true
+  }
+}
